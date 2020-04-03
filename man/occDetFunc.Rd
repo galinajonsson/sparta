@@ -129,6 +129,7 @@ C. List length specification:  This has 3 options:
   1. catlistlength - list length as a categorical variable.
   2. contlistlength - list length as a continuous variable.
   3. nolistlength - no list length variable.
+  4. mixlistlength - list length both a continuous and a categorical variable.
 
 D. Julian date: this is an additional option for including Julian date within the detection model:
   1. jul_date.
@@ -144,13 +145,14 @@ combination is not a good idea. Here are the model elements available:
  \item{\code{"halfcauchy"}}{ - Includes half-Cauchy hyperpriors for all random effects within the model.  The half-Cauchy is a special case of the Student’s t distribution with 1 degree of freedom. }
  \item{\code{"inversegamma"}}{ - Includes inverse-gamma hyperpriors for random effects within the model}
  \item{\code{"catlistlength"}}{ - This specifies that list length should be considered as a catagorical variable. There are 3 classes, lists of length 1, 2-3, and 4 and over. If none of the list length options are specifed 'contlistlength' is used}
+ \item{\code{"mixlistlength"}}{ - This specifies that list length should be considered as both a continious variable and a catagorical variable. There are 3 classes, lists of length of up to 22221 are consideres continous, list lengths of 22222 and 33333 are considered as categorical. If none of the list length options are specifed 'contlistlength' is used}
  \item{\code{"contlistlength"}}{ - This specifies that list length should be considered as a continious variable. If none of the list length options are specifed 'contlistlength' is used}
  \item{\code{"nolistlength"}}{ - This specifies that no list length should be used. If none of the list length options are specifed 'contlistlength' is used}
  \item{\code{"jul_date"}}{ - This adds Julian date to the model as a normal distribution with its mean and standard deviation as monitered parameters.}
  \item{\code{"intercept"}}{ - No longer available. Includes an intercept term in the state and observation model.  By including intercept terms, the occupancy and detection probabilities in each year are centred on an overall mean level.}
  \item{\code{"centering"}}{ - No longer available. Includes hierarchical centering of the model parameters.   Centring does not change the model explicitly but writes it in a way that allows parameter estimates to be updated simultaneously.}
 }
-These options are provided as a vector of characters, e.g. \code{modeltype = c('indran', 'halfcauchy', 'catlistlength')}
+These options are provided as a vector of characters, e.g. \code{modeltype = c('indran', 'halfcauchy', 'catlistlength', 'mixlistlength')}
 }
 \examples{
 \dontrun{

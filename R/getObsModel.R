@@ -45,7 +45,18 @@ getObsModel <- function(modeltype, verbose = FALSE){
                sep = ' + ')
              addVar <- c(addVar,
                          "LL.p ~ dunif(dtype2p_min, dtype2p_max)\n")
-             }
+             },
+           
+           mixlistlength = {
+             basemodel <- paste(
+               basemodel,
+               'LL.p*logL[j]',
+               'dtype2.p*DATATYPE2[j] + dtype3.p*DATATYPE3[j]',
+               sep = ' + ')
+             addVar <- c(addVar,
+                         "LL.p ~ dunif(dtype2p_min, dtype2p_max)\n",
+                         "dtype2.p ~ dnorm(0, 0.01)\ndtype3.p ~ dnorm(0, 0.01)\n")
+           }
     )
   }
   
