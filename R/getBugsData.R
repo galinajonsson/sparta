@@ -88,7 +88,7 @@ getBugsData <- function(bugs_data, modeltype, verbose = FALSE,
         mixlistlength = {
           if(verbose) cat('Adding bugs_data elements for Mixed Catagorical and Continious List Length\n')
           DATATYPE2 <- occDetData$L %in% 22222
-          DATATYPE3 <- occDetData$L > 33333
+          DATATYPE3 <- occDetData$L > 33332
           logL <- log(occDetData$L)*as.numeric(occDetData$L<2000)
           dtype2p_min <- -10 
           dtype2p_max <- 10
