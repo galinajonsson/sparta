@@ -4,10 +4,21 @@
 \alias{simOccData}
 \title{Simulate for Occupancy detection models}
 \usage{
-simOccData(nsites = 20, nvisits = 100, nTP = 10, psi = 0.5,
-  trend = -0.01, mu.lp = -1, tau.lp = 10, beta1 = 182,
-  beta2 = 20, beta3 = 100, dtype2.p = 3, dtype3.p = 10,
-  JD_range = NULL)
+simOccData(
+  nsites = 20,
+  nvisits = 100,
+  nTP = 10,
+  psi = 0.5,
+  trend = -0.01,
+  mu.lp = -1,
+  tau.lp = 10,
+  beta1 = 182,
+  beta2 = 20,
+  beta3 = 100,
+  dtype2.p = 3,
+  dtype3.p = 10,
+  JD_range = NULL
+)
 }
 \arguments{
 \item{nsites}{numeric, the number of sites from which the simulated data is sampled.}
@@ -67,7 +78,7 @@ out <- occDetFunc('mysp', mydata$occDetdata, mydata$spp_vis, n_iter = 1e4,
                  modeltype = sparta_options, return_data=TRUE)
 
 out$BUGSoutput
-detection_phenology(out)
+plot_DetectionPhenology(out)
 
 qplot(data=melt(out$BUGSoutput$sims.array), geom='line',
      x=Var1, col=factor(Var2), y=value) +
