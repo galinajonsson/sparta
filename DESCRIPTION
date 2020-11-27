@@ -1,8 +1,13 @@
 Package: sparta
 Type: Package
 Title: Trend Analysis for Unstructured Data
+<<<<<<< HEAD
 Version: 0.2.07.00
 Date: 2019-10-03
+=======
+Version: 0.2.08
+Date: 2020-10-15
+>>>>>>> 80fb92e31434fe95f9e5cd77af351523abf8d84c
 Authors@R: c(person("Tom", "August", role = c("aut", "cre"), email = "tomaug@ceh.ac.uk"),
              person("Gary", "Powney", role = c("aut")),
              person("Charlie", "Outhwaite", role = c("aut")),
