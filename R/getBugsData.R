@@ -83,7 +83,7 @@ getBugsData <- function(bugs_data, modeltype, verbose = FALSE,
                          dtype2p_min = dtype2p_min,
                          dtype2p_max = dtype2p_max)
           return(bugs_data)
-        },
+          },
         
         mixlistlength = {
           if(verbose) cat('Adding bugs_data elements for Mixed Catagorical and Continious List Length\n')
@@ -99,7 +99,24 @@ getBugsData <- function(bugs_data, modeltype, verbose = FALSE,
                          DATATYPE2 = list(as.numeric(DATATYPE2)),
                          DATATYPE3 = list(as.numeric(DATATYPE3)))
           return(bugs_data)
+          },
+        
+        mixlistlength2 = {
+          if(verbose) cat('Adding bugs_data elements for Mixed Catagorical and Continious List Length With Varying Year Effects\n')
+          DATATYPE2 <- occDetData$L %in% 22222
+          DATATYPE3 <- occDetData$L > 33332
+          logL <- log(occDetData$L)*as.numeric(occDetData$L<2000)
+          dtype2p_min <- -10 
+          dtype2p_max <- 10
+          bugs_data <- c(bugs_data,
+                         logL = list(logL),
+                         dtype2p_min = dtype2p_min,
+                         dtype2p_max = dtype2p_max,
+                         DATATYPE2 = list(as.numeric(DATATYPE2)),
+                         DATATYPE3 = list(as.numeric(DATATYPE3)))
+          return(bugs_data)
         },
+        
         
         {
           if(verbose) cat(modeltype, 'uses the basic bugs_data object, nothing extra added\n')

@@ -46,6 +46,12 @@ getParameters <- function(parameters, modeltype, verbose = FALSE){
            parameters <- c(parameters, "LL.p", "dtype2.p", "dtype3.p")
            return(parameters)
          },
+         
+         mixlistlength2 = {
+           if(verbose) cat('Adding parameters to monitor for Mixed Catagorical and Continious List Length\n')
+           parameters <- c(parameters, "LL.p", "dtype2.p", "dtype3.p")
+           return(parameters)
+         },
 
          {
            if(verbose) cat(modeltype, 'monitors the basic parameters, nothing extra added\n')
