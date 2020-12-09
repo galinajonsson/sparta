@@ -39,15 +39,20 @@ plot_DetectionOverTime <- function(model, spname = NULL, min.yr = NULL){
   }
   
   # now calculate the equivalent values for lists of length 2 and 4 
-  if("LL.p" %in% names(sims_list)){
-    # the model was fitted with continuous list length
-    pDet2 <- pDet1 + sims_list$LL.p * log(2)
-    pDet4 <- pDet1 + sims_list$LL.p * log(4)
-  } else if("dtype2.p" %in% names(sims_list)){
-    # the model was fitted with categorical list length
+  if("LL.p" %in% names(sims_list) && "dtype2.p"  %in% names(sims_list)){
+    # the model was fitted with a mixed list length
+    pDet1 <- pDet1 + sims_list$LL.p[,1] ###### THIS ISN'T QUITE RIGHT FOR DATATYPE1 AS THE FORMULA IS 'LL.p*logL[j]'
     pDet2 <- pDet1 + sims_list$dtype2.p[,1]
     pDet4 <- pDet1 + sims_list$dtype3.p[,1]
-  } 
+    } else if("LL.p" %in% names(sims_list)){
+      # the model was fitted with continuous list length
+      pDet2 <- pDet1 + sims_list$LL.p * log(2)
+      pDet4 <- pDet1 + sims_list$LL.p * log(4)
+      } else if("dtype2.p" %in% names(sims_list)){
+        # the model was fitted with categorical list length
+        pDet2 <- pDet1 + sims_list$dtype2.p[,1]
+        pDet4 <- pDet1 + sims_list$dtype3.p[,1]
+        } 
   # there is also an option to ignore list length, 
   # in which case the probability of detection is assumed to be constant across surveys
   # i.e. if the survey was systematic
