@@ -4,10 +4,9 @@
 
 #' @param model a fitted sparta model of class \code{OccDet}.
 #' @param spname optional name of the species (used for plotting)
-#' @param bins number of points to estimate across the year. Defaults to 12
-#' @param density_function whether the model used a density function to fit Julian date. This form was implemented from version 0.1.48 onwards. For models ran using earlier versions of the package this should be set to FALSE
+#' @param min.yr optional first year of time series (used for plotting)
 #' @param legend_labels optional names for legend labels. Should be a character vector with three elements if the model is fitted with categorical or continuous list length specifications, and four elements if the model is fitted with a mixed list length specification
-#' @param legend_title optional name for legend title
+#' @param legend_title optional name for legend title. Should be a character vector.
 #' 
 #' @details 
 #' Takes a object of \code{OccDet}
