@@ -4,20 +4,24 @@
 \alias{plot_DetectionOverTime}
 \title{Diagnostics for the detection model with respect to Length}
 \usage{
-<<<<<<< HEAD:man/detection_diagnosis.Rd
-detection_diagnosis(model, spname = NULL, min.yr = NULL)
-=======
-plot_DetectionOverTime(model, spname = NULL, min.yr = NULL)
->>>>>>> 2ca2f97daed6d19f5792c421a16010780187f7cf:man/plot_DetectionOverTime.Rd
+plot_DetectionOverTime(
+  model,
+  spname = NULL,
+  min.yr = NULL,
+  legend_labels = NULL,
+  legend_title = NULL
+)
 }
 \arguments{
 \item{model}{a fitted sparta model of class \code{OccDet}.}
 
 \item{spname}{optional name of the species (used for plotting)}
 
-\item{bins}{number of points to estimate across the year. Defaults to 12}
+\item{min.yr}{optional first year of time series (used for plotting)}
 
-\item{density_function}{whether the model used a density function to fit Julian date. This form was implemented from version 0.1.48 onwards. For models ran using earlier versions of the package this should be set to FALSE}
+\item{legend_labels}{optional names for legend labels. Should be a character vector with three elements if the model is fitted with categorical or continuous list length specifications, and four elements if the model is fitted with a mixed list length specification}
+
+\item{legend_title}{optional name for legend title. Should be a character vector.}
 }
 \value{
 This function returns plot showing the detection probability on the y axis and year on the x.
