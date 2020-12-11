@@ -82,6 +82,7 @@ plot_DetectionOverTime <- function(model, spname = NULL, min.yr = NULL, legend_l
     geom_line(aes(x=year, y=mean_pDet, col=factor(ListLength))) +
     geom_ribbon(aes(x=year, ymin=lower95CI, ymax=upper95CI, fill=factor(ListLength)), alpha=0.2) +
     ylab("Detection probability") +
+    xlab("Year") +
     ggtitle(spname) +
     theme_bw()
   
@@ -89,18 +90,17 @@ plot_DetectionOverTime <- function(model, spname = NULL, min.yr = NULL, legend_l
       if(!(is.character(legend_title))){
         stop('legend_title is not a character vector')
       } else{
-        gp <- gp + scale_alpha_manual(name = legend_title)
-        #,
-         #                             values = c(1, 1),
-          #                            breaks = c("Observed", "Fitted") )
+        gp <- gp + labs(color=legend_title, fill = legend_title)
       }}
   
   if(!is.null(legend_title) && !is.null(legend_labels)){
     if(!(is.character(legend_labels))){
       stop('legend_labels is not a character vector')
     } else{
-      gp <- gp + scale_fill_manual(legend_title, 
-        values = legend_labels)
+      gp <- gp + scale_fill_discrete(name = legend_title, 
+                                   labels = legend_labels) +
+        scale_color_discrete(name = legend_title, 
+                             labels = legend_labels)
     }}
   
   gp 
